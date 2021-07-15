@@ -15,8 +15,10 @@ exports.default = {
     category: "Info",
     hideCommand: true,
     cooldown: 15,
-    execute({ client, channel }) {
+    globalCooldown: true,
+    execute({ client, channel, userstate }) {
         return __awaiter(this, void 0, void 0, function* () {
+            utils_1.setCooldown(client, this, channel, userstate);
             const channelInfo = yield utils_1.getChannelInfo(client, channel);
             const prefix = channelInfo.prefix;
             const commands = [];

@@ -6,10 +6,13 @@ export default {
   category: "Info",
   hideCommand: true,
   cooldown: 15,
-  async execute({ client, channel }) {
+  globalCooldown: true,
+  async execute({ client, channel, userstate }) {
+    setCooldown(client, this, channel, userstate);
     const channelInfo = await getChannelInfo(client, channel);
     const prefix = channelInfo.prefix;
     const commands = [];
+
     for (const [key, value] of client.commands.entries()) {
       if (!value.isModOnly && !value.hideCommand) {
         commands.push(`${prefix}${key}`);
