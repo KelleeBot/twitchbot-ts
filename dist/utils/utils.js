@@ -91,7 +91,7 @@ exports.processArguments = processArguments;
 const getChannelInfo = (client, channel) => __awaiter(void 0, void 0, void 0, function* () {
     let channelInfo = client.channelInfoCache.get(channel);
     if (!channelInfo) {
-        channelInfo = yield client.DBChannel.findByIdAndUpdate(channel, {}, { new: true, upsert: true, setDefaultsOnInsert: true });
+        channelInfo = yield client.DBChannel.findByIdAndUpdate(channel.slice(1), {}, { new: true, upsert: true, setDefaultsOnInsert: true });
         client.channelInfoCache.set(channel, channelInfo);
     }
     return channelInfo;

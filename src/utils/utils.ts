@@ -100,7 +100,7 @@ const getChannelInfo = async (client: Client, channel: string) => {
   let channelInfo = client.channelInfoCache.get(channel);
   if (!channelInfo) {
     channelInfo = await client.DBChannel.findByIdAndUpdate(
-      channel,
+      channel.slice(1),
       {},
       { new: true, upsert: true, setDefaultsOnInsert: true }
     );
