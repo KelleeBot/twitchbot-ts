@@ -57,7 +57,7 @@ exports.default = {
             }
             catch (e) {
                 utils_1.log("ERROR", "./src/commands/mod/so.ts", e.message);
-                return client.say(channel, "/me Looks like an error occurred. Please try again.");
+                return utils_1.errorMessage(client, channel);
             }
         });
     }

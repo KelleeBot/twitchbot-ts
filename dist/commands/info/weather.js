@@ -16,7 +16,7 @@ exports.default = {
         weather_js_1.default.find({ search: "New York City, NY", degreeType: "C" }, (err, result) => {
             if (err) {
                 utils_1.log("ERROR", "./src/commands/info/weather.ts", err);
-                return client.say(channel, "/me An error has occureed. Please try again.");
+                return utils_1.errorMessage(client, channel);
             }
             if (!result || !result[0]) {
                 return client.say(channel, "/me No results found.");

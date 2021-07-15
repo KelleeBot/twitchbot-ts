@@ -1,6 +1,6 @@
 import { Command } from "../../interfaces/Command";
 import fetch from "node-fetch";
-import { log, setCooldown } from "../../utils/utils";
+import { log, setCooldown, errorMessage } from "../../utils/utils";
 
 export default {
   name: "dadjoke",
@@ -19,7 +19,7 @@ export default {
       return client.say(channel, `/me ${data.joke}`);
     } catch (e) {
       log("ERROR", "./src/commands/misc/dadjoke.ts", e.message);
-      return client.say(channel, "An error has occurred. Please try again.");
+      return errorMessage(client, channel);
     }
   }
 } as Command;

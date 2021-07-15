@@ -28,7 +28,7 @@ exports.default = {
             }
             catch (e) {
                 utils_1.log("ERROR", "./src/commands/misc/dadadvice.ts", e.message);
-                return client.say(channel, "An error has occurred. Please try again.");
+                return utils_1.errorMessage(client, channel);
             }
         });
     }

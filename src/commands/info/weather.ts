@@ -1,5 +1,5 @@
 import { Command } from "../../interfaces/Command";
-import { log, setCooldown } from "../../utils/utils";
+import { log, setCooldown, errorMessage } from "../../utils/utils";
 import weather from "weather-js";
 import convert from "convert";
 
@@ -15,10 +15,7 @@ export default {
       (err: string, result: any) => {
         if (err) {
           log("ERROR", "./src/commands/info/weather.ts", err);
-          return client.say(
-            channel,
-            "/me An error has occureed. Please try again."
-          );
+          return errorMessage(client, channel);
         }
 
         if (!result || !result[0]) {

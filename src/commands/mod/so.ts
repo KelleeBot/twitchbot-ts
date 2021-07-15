@@ -1,6 +1,6 @@
 import { Command } from "../../interfaces/Command";
 import fetch from "node-fetch";
-import { log, setCooldown } from "../../utils/utils";
+import { log, setCooldown, errorMessage } from "../../utils/utils";
 
 export default {
   name: "so",
@@ -66,10 +66,7 @@ export default {
       );
     } catch (e) {
       log("ERROR", "./src/commands/mod/so.ts", e.message);
-      return client.say(
-        channel,
-        "/me Looks like an error occurred. Please try again."
-      );
+      return errorMessage(client, channel);
     }
   }
 } as Command;
