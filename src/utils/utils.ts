@@ -220,6 +220,10 @@ const errorMessage = (client: Client, channel: string) => {
   client.say(channel, "/me An error has occurred. Please try again.");
 };
 
+const randomRange = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 export {
   processArguments,
   getChannelInfo,
@@ -229,5 +233,6 @@ export {
   log,
   msToTime,
   replaceChars,
-  errorMessage
+  errorMessage,
+  randomRange
 };

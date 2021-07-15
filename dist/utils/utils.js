@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.errorMessage = exports.replaceChars = exports.msToTime = exports.log = exports.isBroadcaster = exports.setCooldown = exports.getCooldown = exports.getChannelInfo = exports.processArguments = void 0;
+exports.randomRange = exports.errorMessage = exports.replaceChars = exports.msToTime = exports.log = exports.isBroadcaster = exports.setCooldown = exports.getCooldown = exports.getChannelInfo = exports.processArguments = void 0;
 const consoleColors = {
     SUCCESS: "\u001b[32m",
     WARNING: "\u001b[33m",
@@ -189,3 +189,7 @@ const errorMessage = (client, channel) => {
     client.say(channel, "/me An error has occurred. Please try again.");
 };
 exports.errorMessage = errorMessage;
+const randomRange = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+exports.randomRange = randomRange;
