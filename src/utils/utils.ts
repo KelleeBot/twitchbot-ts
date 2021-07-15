@@ -209,6 +209,17 @@ const msToTime = (ms: number) => {
   return time.trimEnd();
 };
 
+const replaceChars = (str: string) => {
+  return str
+    .toLowerCase()
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_'""`~()]/g, "")
+    .replace(/\s{2,}/g, " ");
+};
+
+const errorMessage = (client: Client, channel: string) => {
+  client.say(channel, "/me An error has occurred. Please try again.");
+};
+
 export {
   processArguments,
   getChannelInfo,
@@ -216,5 +227,7 @@ export {
   setCooldown,
   isBroadcaster,
   log,
-  msToTime
+  msToTime,
+  replaceChars,
+  errorMessage
 };
