@@ -18,9 +18,11 @@
     "prettier": "^2.3.2"
   },
   "dependencies": {
+    "convert": "^2.1.1",
     "dotenv": "^10.0.0",
     "mongoose": "^5.13.2",
     "node-fetch": "^2.6.1",
-    "tmi.js": "^1.8.3"
+    "tmi.js": "^1.8.3",
+    "weather-js": "^2.0.0"
   }
 }
