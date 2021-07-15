@@ -12,4 +12,4 @@ const channelSchema = new mongoose_1.Schema({
     commandCooldowns: {},
     commandAlias: {}
 });
-exports.default = mongoose_1.model("channel-schema", channelSchema);
+exports.default = mongoose_1.model("twitch-channels-schema", channelSchema, "twitch-channels-schema");
