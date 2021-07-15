@@ -14,7 +14,7 @@ const villagers = [
     "Bob"
 ];
 exports.default = {
-    name: "dream",
+    name: "beanvillagers",
     category: "AC",
     cooldown: 15,
     globalCooldown: true,
