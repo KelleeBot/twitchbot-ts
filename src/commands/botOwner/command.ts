@@ -6,6 +6,7 @@ export default {
   category: "Bot Owner",
   devOnly: true,
   hideCommand: true,
+  canNotDisable: true,
   async execute({ client, channel, userstate, args }) {
     const channelName = channel.slice(1);
     let channelInfo = await getChannelInfo(client, channelName);

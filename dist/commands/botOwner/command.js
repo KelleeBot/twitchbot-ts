@@ -15,6 +15,7 @@ exports.default = {
     category: "Bot Owner",
     devOnly: true,
     hideCommand: true,
+    canNotDisable: true,
     execute({ client, channel, userstate, args }) {
         return __awaiter(this, void 0, void 0, function* () {
             const channelName = channel.slice(1);
