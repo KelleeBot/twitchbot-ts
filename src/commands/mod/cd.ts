@@ -26,7 +26,7 @@ export default {
       );
     }
 
-    if (!args) {
+    if (!args[0]) {
       startCountdown(channel);
       return countdown(client, channel, 6);
     }

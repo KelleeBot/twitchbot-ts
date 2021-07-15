@@ -16,7 +16,7 @@ exports.default = {
         if (countdown_1.started(channel)) {
             return client.say(channel, "/me I can only do one countdown at a time kellee1Glare");
         }
-        if (!args) {
+        if (!args[0]) {
             countdown_1.startCountdown(channel);
             return countdown_1.countdown(client, channel, 6);
         }
