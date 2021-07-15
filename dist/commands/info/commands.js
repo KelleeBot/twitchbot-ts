@@ -23,7 +23,11 @@ exports.default = {
             const prefix = channelInfo.prefix;
             const commands = [];
             for (const [key, value] of client.commands.entries()) {
-                if (!value.isModOnly && !value.hideCommand) {
+                if (!value.isModOnly &&
+                    !value.hideCommand &&
+                    !client.channelInfoCache
+                        .get(channel.slice(1))
+                        .disabledCommands.includes(key)) {
                     commands.push(`${prefix}${key}`);
                 }
             }
