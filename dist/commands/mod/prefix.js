@@ -34,13 +34,13 @@ exports.default = {
                 return client.say(channel, "/me Please make sure to enter a new prefix.");
             }
             utils_1.setCooldown(client, this, channel, userstate);
-            yield client.DBChannel.findByIdAndUpdate(channel, {
+            yield client.DBChannel.findByIdAndUpdate(channel.slice(1), {
                 $set: {
                     prefix: args[0]
                 }
             }, { new: true, upsert: true, setDefaultsOnInsert: true });
             channelInfo.prefix = args[0];
-            client.channelInfoCache.set(channel, channelInfo);
+            client.channelInfoCache.set(channel.slice(1), channelInfo);
             return client.say(channel, `/me Channel prefix has been successfully set to "${args[0]}".`);
         });
     }

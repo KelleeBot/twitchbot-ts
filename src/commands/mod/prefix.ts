@@ -31,7 +31,7 @@ export default {
 
     setCooldown(client, this, channel, userstate);
     await client.DBChannel.findByIdAndUpdate(
-      channel,
+      channel.slice(1),
       {
         $set: {
           prefix: args[0]
@@ -41,7 +41,7 @@ export default {
     );
 
     channelInfo.prefix = args[0];
-    client.channelInfoCache.set(channel, channelInfo);
+    client.channelInfoCache.set(channel.slice(1), channelInfo);
     return client.say(
       channel,
       `/me Channel prefix has been successfully set to "${args[0]}".`
