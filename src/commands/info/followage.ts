@@ -9,7 +9,6 @@ import {
 
 export default {
   name: "followage",
-  aliases: ["fa"],
   category: "Info",
   cooldown: 15,
   async execute({ client, channel, userstate }) {

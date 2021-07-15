@@ -16,7 +16,6 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const utils_1 = require("../../utils/utils");
 exports.default = {
     name: "followage",
-    aliases: ["fa"],
     category: "Info",
     cooldown: 15,
     execute({ client, channel, userstate }) {
