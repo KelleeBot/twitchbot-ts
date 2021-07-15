@@ -20,7 +20,7 @@ export default {
   category: "Misc",
   cooldown: 15,
   execute({ client, channel, args, userstate }) {
-    //setCooldown(client, this, channel, userstate);
+    setCooldown(client, this, channel, userstate);
     if (!args.length) {
       return client.say(
         channel,
