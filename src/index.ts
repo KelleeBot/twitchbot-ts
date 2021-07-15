@@ -58,11 +58,11 @@ dotenv.config();
     await registerEvents(client, "../events");
     await registerCommands(client, "../commands");
   } catch (e) {
-    log("ERROR", "./index.js", `An error has occurred: ${e.message}.`);
+    log("ERROR", "./src/index.ts", `An error has occurred: ${e.message}.`);
   }
   log(
     "SUCCESS",
-    "./index.js",
+    "./src/index.ts",
     "Successfully loaded all commands, events, schemas, and connected to MongoDB."
   );
 })();

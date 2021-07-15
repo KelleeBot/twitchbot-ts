@@ -80,7 +80,7 @@ dotenv.config();
         yield registry_1.registerCommands(client, "../commands");
     }
     catch (e) {
-        utils_1.log("ERROR", "./index.js", `An error has occurred: ${e.message}.`);
+        utils_1.log("ERROR", "./src/index.ts", `An error has occurred: ${e.message}.`);
     }
-    utils_1.log("SUCCESS", "./index.js", "Successfully loaded all commands, events, schemas, and connected to MongoDB.");
+    utils_1.log("SUCCESS", "./src/index.ts", "Successfully loaded all commands, events, schemas, and connected to MongoDB.");
 }))();
