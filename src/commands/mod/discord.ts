@@ -2,6 +2,7 @@ import { Command } from "../../interfaces/Command";
 
 export default {
   name: "discord",
+  category: "Mod",
   isModOnly: true,
   execute({ client, channel }) {
     return client.say(
