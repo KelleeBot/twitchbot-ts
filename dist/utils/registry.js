@@ -45,7 +45,8 @@ function registerCommands(client, ...dirs) {
                 else {
                     if (file.endsWith(".ts") || file.endsWith(".js")) {
                         try {
-                            const cmdModule = (yield Promise.resolve().then(() => __importStar(require(path_1.default.join(__dirname, dir, file))))).default;
+                            const cmdModule = (yield Promise.resolve().then(() => __importStar(require(path_1.default.join(__dirname, dir, file)))))
+                                .default;
                             const { name, aliases, category, execute, hideCommand } = cmdModule;
                             if (!name) {
                                 console.warn(`The command "${path_1.default.join(__dirname, dir, file)}" doesn't have a name.`);
@@ -109,8 +110,7 @@ function registerEvents(client, dir) {
                 if (file.endsWith(".ts") || file.endsWith(".js")) {
                     let eventName = file.substring(0, file.length - 3);
                     try {
-                        let eventModule = (yield Promise.resolve().then(() => __importStar(require(path_1.default.join(__dirname, dir, file)))))
-                            .default;
+                        let eventModule = (yield Promise.resolve().then(() => __importStar(require(path_1.default.join(__dirname, dir, file))))).default;
                         client.on(eventName, eventModule.bind(null, client));
                     }
                     catch (e) {

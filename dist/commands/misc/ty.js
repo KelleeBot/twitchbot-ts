@@ -13,9 +13,7 @@ exports.default = {
             const content = compliments_json_1.COMPLIMENTS[index].replace(/<user>/g, userstate["display-name"]);
             return client.say(channel, `/me ${content} KPOPheart`);
         }
-        const user = args[0].startsWith("@")
-            ? args[0].replace(/@/g, "").trim()
-            : args[0].trim();
+        const user = args[0].startsWith("@") ? args[0].replace(/@/g, "").trim() : args[0].trim();
         if (user.toLowerCase() === `${process.env.BOT_USERNAME}`.toLowerCase()) {
             return client.say(channel, "/me You better thank me. It's a lot of work being a bot on here.");
         }

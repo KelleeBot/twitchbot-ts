@@ -18,9 +18,7 @@ exports.default = {
     globalCooldown: true,
     execute({ client, channel, userstate }) {
         utils_1.setCooldown(client, this, channel, userstate);
-        const time = dayjs_1.default()
-            .tz("America/New_York")
-            .format("DD/MM/YYYY h:mm:ss A z");
+        const time = dayjs_1.default().tz("America/New_York").format("DD/MM/YYYY h:mm:ss A z");
         return client.say(channel, `/me Kéllee's current time is ${time}.`);
     }
 };

@@ -52,8 +52,7 @@ exports.default = (client, channel, userstate, message, self) => __awaiter(void 
         const cd = utils_1.getCooldown(client, command);
         let cooldowns;
         if (cd) {
-            if (typeof command.globalCooldown === "undefined" ||
-                command.globalCooldown) {
+            if (typeof command.globalCooldown === "undefined" || command.globalCooldown) {
                 if (!client.globalCooldowns.has(command.name)) {
                     client.globalCooldowns.set(command.name, new Map());
                 }

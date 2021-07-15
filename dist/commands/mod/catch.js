@@ -40,9 +40,7 @@ exports.default = {
     ],
     execute({ client, channel, args, userstate }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = args[0].startsWith("@")
-                ? args[0].replace(/@/g, "").trim()
-                : args[0].trim();
+            const user = args[0].startsWith("@") ? args[0].replace(/@/g, "").trim() : args[0].trim();
             const index = utils_1.randomRange(0, pokeBalls.length - 1);
             const pokedexNum = Math.floor(Math.random() * 899); // 898 Pokemon
             const pokeBall = pokeBalls[index];

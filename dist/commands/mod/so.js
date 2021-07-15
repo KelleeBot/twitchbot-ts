@@ -30,9 +30,7 @@ exports.default = {
     execute({ client, channel, userstate, args }) {
         return __awaiter(this, void 0, void 0, function* () {
             const { username } = userstate;
-            const user = args[0].startsWith("@")
-                ? args[0].replace(/@/g, "").trim()
-                : args[0].trim();
+            const user = args[0].startsWith("@") ? args[0].replace(/@/g, "").trim() : args[0].trim();
             try {
                 const res = yield node_fetch_1.default(`https://beta.decapi.me/twitch/game/${encodeURIComponent(user)}`);
                 const data = yield res.text();

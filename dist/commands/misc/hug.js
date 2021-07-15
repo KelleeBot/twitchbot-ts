@@ -22,22 +22,18 @@ exports.default = {
         if (!args.length) {
             return client.say(channel, `/me ${userstate["display-name"]} hugs themselves because they didn't specify who to hug.`);
         }
-        const user = args[0].startsWith("@")
-            ? args[0].replace(/@/g, "").trim()
-            : args[0].trim();
+        const user = args[0].startsWith("@") ? args[0].replace(/@/g, "").trim() : args[0].trim();
         if ((userstate.username.toLowerCase() == "kelleeluna" ||
             userstate.username.toLowerCase() == "pineappleontilt") &&
             user.toLowerCase() == "iaraaron") {
             return client.say(channel, `/me ${userstate["display-name"]} gives ${user} a great big hug. I love you ʕっ•ᴥ•ʔっ kellee1Love`);
         }
-        if (user.toLowerCase() === "iaraaron" ||
-            utils_1.replaceChars(user).includes("aaron")) {
+        if (user.toLowerCase() === "iaraaron" || utils_1.replaceChars(user).includes("aaron")) {
             const index = utils_1.randomRange(0, aaronHugResponses.length - 1);
             const response = aaronHugResponses[index].replace(/<username>/g, userstate["display-name"]);
             return client.say(channel, `/me ${response}`);
         }
-        if (userstate.username.toLowerCase() == user.toLowerCase() ||
-            user.toLowerCase() == "me") {
+        if (userstate.username.toLowerCase() == user.toLowerCase() || user.toLowerCase() == "me") {
             return client.say(channel, `/me ${userstate["display-name"]} gives themselves a hug because they are lonely.`);
         }
         if (user.toLowerCase() === `${process.env.BOT_USERNAME}`.toLowerCase()) {
