@@ -1,0 +1,26 @@
+{
+  "name": "twitchbot-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/index.ts",
+    "start-js": "tsc -p . && node ./dist/index.js",
+    "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
+  },
+  "keywords": [],
+  "author": "iaraaron",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.11",
+    "@types/tmi.js": "^1.7.2",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^5.13.2",
+    "node-fetch": "^2.6.1",
+    "tmi.js": "^1.8.3"
+  }
+}
