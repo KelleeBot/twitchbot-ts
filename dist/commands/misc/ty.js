@@ -4,7 +4,7 @@ const utils_1 = require("../../utils/utils");
 const compliments_json_1 = require("../../config/compliments.json");
 exports.default = {
     name: "ty",
-    category: "misc",
+    category: "Misc",
     cooldown: 15,
     execute({ client, channel, args, userstate }) {
         utils_1.setCooldown(client, this, channel, userstate);

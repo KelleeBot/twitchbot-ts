@@ -4,7 +4,7 @@ import { COMPLIMENTS } from "../../config/compliments.json";
 
 export default {
   name: "ty",
-  category: "misc",
+  category: "Misc",
   cooldown: 15,
   execute({ client, channel, args, userstate }) {
     setCooldown(client, this, channel, userstate);
