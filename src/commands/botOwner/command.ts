@@ -8,7 +8,7 @@ export default {
   hideCommand: true,
   async execute({ client, channel, userstate, args }) {
     const channelName = channel.slice(1);
-    let channelInfo = await getChannelInfo(client, channel);
+    let channelInfo = await getChannelInfo(client, channelName);
     const disabledCommands = channelInfo.disabledCommands;
 
     if (!args[0]) {

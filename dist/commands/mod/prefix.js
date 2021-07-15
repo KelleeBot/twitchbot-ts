@@ -26,15 +26,16 @@ exports.default = {
     ],
     execute({ client, channel, args, userstate }) {
         return __awaiter(this, void 0, void 0, function* () {
+            const channelName = channel.slice(1);
             if (!prefixRegExp.test(args[0])) {
                 return client.say(channel, "/me That command prefix is not allowed. Please try again.");
             }
-            const channelInfo = yield utils_1.getChannelInfo(client, channel);
+            const channelInfo = yield utils_1.getChannelInfo(client, channelName);
             if (channelInfo.prefix == args[0]) {
                 return client.say(channel, "/me Please make sure to enter a new prefix.");
             }
             utils_1.setCooldown(client, this, channel, userstate);
-            yield client.DBChannel.findByIdAndUpdate(channel.slice(1), {
+            yield client.DBChannel.findByIdAndUpdate(channelName, {
                 $set: {
                     prefix: args[0]
                 }

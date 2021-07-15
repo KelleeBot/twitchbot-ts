@@ -18,7 +18,7 @@ exports.default = {
     execute({ client, channel, userstate, args }) {
         return __awaiter(this, void 0, void 0, function* () {
             const channelName = channel.slice(1);
-            let channelInfo = yield utils_1.getChannelInfo(client, channel);
+            let channelInfo = yield utils_1.getChannelInfo(client, channelName);
             const disabledCommands = channelInfo.disabledCommands;
             if (!args[0]) {
                 return client.say(channel, `/me ${disabledCommands.length == 0

@@ -17,6 +17,7 @@ export default {
     }
   ],
   async execute({ client, channel, args, userstate }) {
+    const channelName = channel.slice(1);
     if (!prefixRegExp.test(args[0])) {
       return client.say(
         channel,
@@ -24,14 +25,14 @@ export default {
       );
     }
 
-    const channelInfo = await getChannelInfo(client, channel);
+    const channelInfo = await getChannelInfo(client, channelName);
     if (channelInfo.prefix == args[0]) {
       return client.say(channel, "/me Please make sure to enter a new prefix.");
     }
 
     setCooldown(client, this, channel, userstate);
     await client.DBChannel.findByIdAndUpdate(
-      channel.slice(1),
+      channelName,
       {
         $set: {
           prefix: args[0]
