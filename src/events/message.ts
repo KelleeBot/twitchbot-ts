@@ -24,14 +24,14 @@ export default async (
 
     checkTwitchChat(client, userstate, message, channel);
 
+    let channelInfo = await getChannelInfo(client, channel.slice(1));
+
     if (message === "kellee1Glare") {
       return client.say(
         channel,
         `kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare`
       );
     }
-
-    let channelInfo = await getChannelInfo(client, channel);
 
     // if (message.toLowerCase() === `@${process.env.BOT_USERNAME}`) {
     //   return client.say(
@@ -66,6 +66,8 @@ export default async (
       return;
 
     if (command.devOnly && !devs.includes(userstate.username)) return;
+
+    if (channelInfo.disabledCommands.includes(command.name)) return;
 
     const cd = getCooldown(client, command);
     let cooldowns;

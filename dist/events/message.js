@@ -17,10 +17,10 @@ exports.default = (client, channel, userstate, message, self) => __awaiter(void 
         if (self || userstate.bot)
             return;
         checkTwitchChat(client, userstate, message, channel);
+        let channelInfo = yield utils_1.getChannelInfo(client, channel.slice(1));
         if (message === "kellee1Glare") {
             return client.say(channel, `kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare`);
         }
-        let channelInfo = yield utils_1.getChannelInfo(client, channel);
         // if (message.toLowerCase() === `@${process.env.BOT_USERNAME}`) {
         //   return client.say(
         //     channel,
@@ -46,6 +46,8 @@ exports.default = (client, channel, userstate, message, self) => __awaiter(void 
             !config_json_1.devs.includes(userstate.username))
             return;
         if (command.devOnly && !config_json_1.devs.includes(userstate.username))
+            return;
+        if (channelInfo.disabledCommands.includes(command.name))
             return;
         const cd = utils_1.getCooldown(client, command);
         let cooldowns;
