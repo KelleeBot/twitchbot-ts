@@ -224,6 +224,10 @@ const randomRange = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const formatNumber = (num: number) => {
+  return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+};
+
 export {
   processArguments,
   getChannelInfo,
@@ -234,5 +238,6 @@ export {
   msToTime,
   replaceChars,
   errorMessage,
-  randomRange
+  randomRange,
+  formatNumber
 };

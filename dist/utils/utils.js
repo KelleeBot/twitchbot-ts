@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.randomRange = exports.errorMessage = exports.replaceChars = exports.msToTime = exports.log = exports.isBroadcaster = exports.setCooldown = exports.getCooldown = exports.getChannelInfo = exports.processArguments = void 0;
+exports.formatNumber = exports.randomRange = exports.errorMessage = exports.replaceChars = exports.msToTime = exports.log = exports.isBroadcaster = exports.setCooldown = exports.getCooldown = exports.getChannelInfo = exports.processArguments = void 0;
 const consoleColors = {
     SUCCESS: "\u001b[32m",
     WARNING: "\u001b[33m",
@@ -193,3 +193,7 @@ const randomRange = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 exports.randomRange = randomRange;
+const formatNumber = (num) => {
+    return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+};
+exports.formatNumber = formatNumber;
