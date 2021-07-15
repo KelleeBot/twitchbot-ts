@@ -22,6 +22,15 @@ export default async (
   try {
     if (self || userstate.bot) return;
 
+    checkTwitchChat(client, userstate, message, channel);
+
+    if (message === "kellee1Glare") {
+      return client.say(
+        channel,
+        `kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare kellee1Glare`
+      );
+    }
+
     let channelInfo = await getChannelInfo(client, channel);
 
     // if (message.toLowerCase() === `@${process.env.BOT_USERNAME}`) {
@@ -119,5 +128,63 @@ export default async (
     });
   } catch (e) {
     console.log(e);
+  }
+};
+
+const checkTwitchChat = (
+  client: Client,
+  userstate: Userstate,
+  message: string,
+  channel: string
+) => {
+  if (userstate.mod || isBroadcaster(userstate.username)) return;
+
+  if (message.length > 250) {
+    client
+      .deletemessage(channel, userstate["id"]!)
+      .then((data) => {
+        client.say(
+          channel,
+          `/me ${userstate["display-name"]}, the mods here don't like reading long messages. Please try to keep it short and sweet.`
+        );
+      })
+      .catch((e) => {
+        log("ERROR", ".src/events/message.ts", e);
+      });
+  }
+
+  if (
+    message.toLowerCase().includes("bigfollows .com") ||
+    message.toLowerCase().includes("bigfollows.com") ||
+    message.toLowerCase().includes("bigfollows . com") ||
+    message.includes(
+      "Wanna b̔ecome̤ famoͅus̈́?̿ Bu͗y f̭ollow̮ers, primes and viewers on ̫" //https://clck.ru/R9gQV ͉(bigfollows .com)̰"
+    )
+  ) {
+    client
+      .ban(channel, userstate.username)
+      .then((data) => {
+        client.say(channel, `/me No, I don't wanna become famous. Good bye!`);
+      })
+      .catch((e) => {
+        log("ERROR", ".src/events/message.js", e);
+      });
+  }
+
+  if (
+    message ===
+    "Hey. I want to offer you a boost on twitch, a stable number of viewers, there are chat bots. I will offer a price lower than any competitor. Auto-start when stream became online.Pay only for the time when the stream is online.Pay by the hour! I'll provide a free test.The client has access to the panel to launch, and can control the process himself!For tech problems, a full refund. Telegram @Twitch_viewers Discord Twitch#3227"
+  ) {
+    client
+      .ban(channel, userstate.username)
+      .then((data) => {
+        client.say(
+          channel,
+          `/me No, I don't want a boost on Twitch. Get outta here!`
+        );
+      })
+      .catch((e) => {
+        log("ERROR", ".src/events/message.js", e);
+      });
   }
 };
