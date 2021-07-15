@@ -18,7 +18,9 @@ export default {
         `/me ${
           disabledCommands.length == 0
             ? "There are no disabled commands for this channel."
-            : `${disabledCommands!.join(", ")}`
+            : `Disabled commands for this channel: ${disabledCommands!.join(
+                ", "
+              )}`
         }`
       );
     }

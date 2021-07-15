@@ -24,7 +24,7 @@ exports.default = {
             if (!args[0]) {
                 return client.say(channel, `/me ${disabledCommands.length == 0
                     ? "There are no disabled commands for this channel."
-                    : `${disabledCommands.join(", ")}`}`);
+                    : `Disabled commands for this channel: ${disabledCommands.join(", ")}`}`);
             }
             if (!args[1]) {
                 return client.say(channel, "/me Please specify a command.");
