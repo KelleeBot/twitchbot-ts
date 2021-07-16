@@ -13,7 +13,6 @@ dotenv.config();
             useUnifiedTopology: true,
             useFindAndModify: false
         });
-
         log("SUCCESS", "./src/index.ts", "Successfully connected to the database.");
     } catch (e) {
         log("ERROR", "./src/index.ts", `Error connecting to database: ${e.message}`);
@@ -47,6 +46,15 @@ dotenv.config();
         client.channelInfoCache = new Map();
 
         client.DBChannel = (await import("./models/channelSchema")).default;
+        client.DBBlacklist = (await import("./models/blacklistSchema")).default;
+
+        const blacklistFetch = await client.DBBlacklist.findByIdAndUpdate(
+            "blacklist",
+            {},
+            { new: true, upsert: true, setDefaultsOnInsert: true }
+        );
+        //@ts-ignore
+        client.blacklistCache = new Set(blacklistFetch.blacklisted);
 
         client.channelCooldowns = new Map();
         client.globalCooldowns = new Map();

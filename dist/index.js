@@ -74,6 +74,10 @@ dotenv.config();
         client.categories = new Map();
         client.channelInfoCache = new Map();
         client.DBChannel = (yield Promise.resolve().then(() => __importStar(require("./models/channelSchema")))).default;
+        client.DBBlacklist = (yield Promise.resolve().then(() => __importStar(require("./models/blacklistSchema")))).default;
+        const blacklistFetch = yield client.DBBlacklist.findByIdAndUpdate("blacklist", {}, { new: true, upsert: true, setDefaultsOnInsert: true });
+        //@ts-ignore
+        client.blacklistCache = new Set(blacklistFetch.blacklisted);
         client.channelCooldowns = new Map();
         client.globalCooldowns = new Map();
         yield registry_1.registerEvents(client, "../events");
