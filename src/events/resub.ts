@@ -20,6 +20,6 @@ export default (
             shareStreak
                 ? `They are now on a ${streakMonths} month${streakMonths != 1 ? "s" : ""} streak!`
                 : ""
-        }PrideRise`
+        } PrideRise`
     );
 };
