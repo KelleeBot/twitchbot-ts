@@ -20,7 +20,8 @@ exports.default = {
     execute({ client, channel, userstate }) {
         return __awaiter(this, void 0, void 0, function* () {
             utils_1.setCooldown(client, this, channel, userstate);
-            const channelInfo = yield utils_1.getChannelInfo(client, channel);
+            const channelName = channel.slice(1);
+            const channelInfo = yield utils_1.getChannelInfo(client, channelName);
             const prefix = channelInfo.prefix;
             const commands = [];
             for (const [key, value] of client.commands.entries()) {

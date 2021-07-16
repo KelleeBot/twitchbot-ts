@@ -10,7 +10,8 @@ export default {
     globalCooldown: true,
     async execute({ client, channel, userstate }) {
         setCooldown(client, this, channel, userstate);
-        const channelInfo = await getChannelInfo(client, channel);
+        const channelName = channel.slice(1);
+        const channelInfo = await getChannelInfo(client, channelName);
         const prefix = channelInfo.prefix;
         const commands = [];
 
