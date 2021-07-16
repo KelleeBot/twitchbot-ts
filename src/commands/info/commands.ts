@@ -4,6 +4,7 @@ import { getChannelInfo, setCooldown } from "../../utils/utils";
 export default {
     name: "commands",
     category: "Info",
+    canNotDisable: true,
     hideCommand: true,
     cooldown: 15,
     globalCooldown: true,

@@ -13,6 +13,7 @@ const utils_1 = require("../../utils/utils");
 exports.default = {
     name: "commands",
     category: "Info",
+    canNotDisable: true,
     hideCommand: true,
     cooldown: 15,
     globalCooldown: true,
