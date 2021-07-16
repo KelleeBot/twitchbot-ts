@@ -12,4 +12,4 @@ const channelSchema = new Schema({
     commandAlias: {}
 });
 
-export default model("twitch-channels-schema", channelSchema, "twitch-channels-schema");
+export default model("kellee", channelSchema, "kellee"); // Creating separate schema to prevent other bot from joining Kellee's channel

@@ -12,4 +12,4 @@ const channelSchema = new mongoose_1.Schema({
     commandCooldowns: {},
     commandAlias: {}
 });
-exports.default = mongoose_1.model("twitch-channels-schema", channelSchema, "twitch-channels-schema");
+exports.default = mongoose_1.model("kellee", channelSchema, "kellee"); // Creating separate schema to prevent other bot from joining Kellee's channel
