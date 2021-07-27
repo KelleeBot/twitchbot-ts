@@ -132,7 +132,7 @@ const checkTwitchChat = (
 ) => {
     if (userstate.mod || isBroadcaster(userstate.username)) return;
 
-    if (message.length > 250) {
+    if (message.length > 450) {
         client
             .deletemessage(channel, userstate["id"]!)
             .then((data) => {
