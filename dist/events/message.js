@@ -103,7 +103,7 @@ exports.default = (client, channel, userstate, message, self) => __awaiter(void 
 const checkTwitchChat = (client, userstate, message, channel) => {
     if (userstate.mod || utils_1.isBroadcaster(userstate.username))
         return;
-    if (message.length > 250) {
+    if (message.length > 450) {
         client
             .deletemessage(channel, userstate["id"])
             .then((data) => {
