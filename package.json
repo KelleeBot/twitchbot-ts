@@ -6,23 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/index.ts",
-    "start-js": "tsc -p . && node ./dist/index.js",
-    "prettier": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "run-js": "tsc -p . && node ./dist/index.js",
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "keywords": [],
   "author": "iaraaron",
   "license": "ISC",
   "devDependencies": {
-    "@types/node-fetch": "^2.5.11",
+    "@types/node-fetch": "^2.5.12",
     "@types/tmi.js": "^1.7.2",
-    "prettier": "^2.3.2"
+    "prettier": "^2.4.1"
   },
   "dependencies": {
-    "convert": "^2.1.1",
-    "dayjs": "^1.10.6",
+    "convert": "^4.1.3",
+    "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
-    "mongoose": "^5.13.2",
-    "node-fetch": "^2.6.1",
+    "mongoose": "^6.0.9",
+    "node-fetch": "^2.6.5",
     "tmi.js": "^1.8.3",
     "weather-js": "^2.0.0"
   }
