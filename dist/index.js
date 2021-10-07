@@ -39,15 +39,11 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 (() => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        mongoose_1.default.connect(`${process.env.MONGO_PATH}`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false
-        });
+        yield mongoose_1.default.connect(`${process.env.MONGO_PATH}`);
         utils_1.log("SUCCESS", "./src/index.ts", "Successfully connected to the database.");
     }
     catch (e) {
-        utils_1.log("ERROR", "./src/index.ts", `Error connecting to database: ${e.message}`);
+        utils_1.log("ERROR", "./src/index.ts", `Error connecting to database: ${e}`);
         process.exit(1);
     }
     try {
@@ -84,7 +80,7 @@ dotenv.config();
         yield registry_1.registerCommands(client, "../commands");
     }
     catch (e) {
-        utils_1.log("ERROR", "./src/index.ts", `An error has occurred: ${e.message}.`);
+        utils_1.log("ERROR", "./src/index.ts", `An error has occurred: ${e}.`);
     }
     utils_1.log("SUCCESS", "./src/index.ts", "Successfully loaded all commands, events, schemas, and connected to MongoDB.");
 }))();

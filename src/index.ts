@@ -8,14 +8,10 @@ dotenv.config();
 
 (async () => {
     try {
-        mongoose.connect(`${process.env.MONGO_PATH}`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false
-        });
+        await mongoose.connect(`${process.env.MONGO_PATH}`);
         log("SUCCESS", "./src/index.ts", "Successfully connected to the database.");
     } catch (e) {
-        log("ERROR", "./src/index.ts", `Error connecting to database: ${e.message}`);
+        log("ERROR", "./src/index.ts", `Error connecting to database: ${e}`);
         process.exit(1);
     }
 
@@ -62,7 +58,7 @@ dotenv.config();
         await registerEvents(client, "../events");
         await registerCommands(client, "../commands");
     } catch (e) {
-        log("ERROR", "./src/index.ts", `An error has occurred: ${e.message}.`);
+        log("ERROR", "./src/index.ts", `An error has occurred: ${e}.`);
     }
     log(
         "SUCCESS",
