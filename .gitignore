@@ -1,5 +1,5 @@
-.env
+/dist
 /node_modules
 .prettierrc
-dist
+.env
 .DS_STORE
