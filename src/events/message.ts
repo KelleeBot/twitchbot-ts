@@ -4,8 +4,9 @@ import {
     isBroadcaster,
     log,
     msToTime,
-    processArguments
-} from "../utils/utils";
+    processArguments,
+    getAllFamousLinks
+} from "../utils";
 import { devs } from "../config/config.json";
 import { Client } from "../Client";
 import { Userstate } from "tmi.js";
@@ -124,7 +125,7 @@ export default async (
     }
 };
 
-const checkTwitchChat = (
+const checkTwitchChat = async (
     client: Client,
     userstate: Userstate,
     message: string,
@@ -142,25 +143,21 @@ const checkTwitchChat = (
                 );
             })
             .catch((e) => {
-                log("ERROR", ".src/events/message.ts", e);
+                log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             });
     }
 
-    if (
-        message.toLowerCase().includes("bigfollows .com") ||
-        message.toLowerCase().includes("bigfollows.com") ||
-        message.toLowerCase().includes("bigfollows . com") ||
-        message.includes(
-            "Wanna b̔ecome̤ famoͅus̈́?̿ Bu͗y f̭ollow̮ers, primes and viewers on ̫" //https://clck.ru/R9gQV ͉(bigfollows .com)̰"
-        )
-    ) {
+    const result = await getAllFamousLinks(client);
+    const famousChecker = (value: string) => result.some((element) => value.includes(element));
+
+    if (famousChecker(message.toLowerCase())) {
         client
             .ban(channel, userstate.username)
-            .then((data) => {
+            .then(() => {
                 client.say(channel, `/me No, I don't wanna become famous. Good bye!`);
             })
             .catch((e) => {
-                log("ERROR", ".src/events/message.js", e);
+                log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             });
     }
 
@@ -174,7 +171,7 @@ const checkTwitchChat = (
                 client.say(channel, `/me No, I don't want a boost on Twitch. Get outta here!`);
             })
             .catch((e) => {
-                log("ERROR", ".src/events/message.js", e);
+                log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             });
     }
 };
