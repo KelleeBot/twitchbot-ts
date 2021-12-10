@@ -92,6 +92,17 @@ const processArguments = (message: string, msgArgs: string[], expectedArgs: Argu
     return flags;
 };
 
+export const getAllFamousLinks = async (client: Client) => {
+    if (client.famousCache.length) return client.famousCache;
+    const results = (await client.DBFamousLinks.find({})) as any;
+    for (const result of results) {
+        for (const famous of result.famous) {
+            client.famousCache.push(famous);
+        }
+    }
+    return client.famousCache;
+};
+
 const getChannelInfo = async (client: Client, channel: string) => {
     let channelInfo = client.channelInfoCache.get(channel);
     if (!channelInfo) {
