@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
-import tmi from "tmi.js";
 import { Client } from "./Client";
-import { registerCommands, registerEvents } from "./utils/registry";
-import { log } from "./utils/utils";
+import { log, registerCommands, registerEvents } from "./utils";
+import "./interfaces/Prototype";
 import * as dotenv from "dotenv";
 dotenv.config();
 
 (async () => {
     try {
         await mongoose.connect(`${process.env.MONGO_PATH}`);
-        log("SUCCESS", "./src/index.ts", "Successfully connected to the database.");
+        log("SUCCESS", `${__filename}`, "Successfully connected to the database.");
     } catch (e) {
-        log("ERROR", "./src/index.ts", `Error connecting to database: ${e}`);
+        log("ERROR", `${__filename}`, `Error connecting to database: ${e}`);
         process.exit(1);
     }
 
@@ -34,23 +33,12 @@ dotenv.config();
             channels: [`${process.env.CHANNEL_NAME}`]
         };
 
-        const client = new tmi.client(opts) as Client;
-        client.connect();
+        const client = new Client(opts);
+        await client.connect();
 
         client.commands = new Map();
         client.categories = new Map();
         client.channelInfoCache = new Map();
-
-        client.DBChannel = (await import("./models/channelSchema")).default;
-        client.DBBlacklist = (await import("./models/blacklistSchema")).default;
-
-        const blacklistFetch = await client.DBBlacklist.findByIdAndUpdate(
-            "blacklist",
-            {},
-            { new: true, upsert: true, setDefaultsOnInsert: true }
-        );
-        //@ts-ignore
-        client.blacklistCache = new Set(blacklistFetch.blacklisted);
 
         client.channelCooldowns = new Map();
         client.globalCooldowns = new Map();
@@ -58,11 +46,11 @@ dotenv.config();
         await registerEvents(client, "../events");
         await registerCommands(client, "../commands");
     } catch (e) {
-        log("ERROR", "./src/index.ts", `An error has occurred: ${e}.`);
+        log("ERROR", `${__filename}`, `An error has occurred: ${e}.`);
     }
     log(
         "SUCCESS",
-        "./src/index.ts",
+        `${__filename}`,
         "Successfully loaded all commands, events, schemas, and connected to MongoDB."
     );
 })();
