@@ -12,18 +12,19 @@ export default {
         setCooldown(client, this, channel, userstate);
         const channelName = channel.slice(1);
         const channelInfo = await getChannelInfo(client, channelName);
-        const prefix = channelInfo.prefix;
-        const commands = [];
+        const { prefix } = channelInfo;
+        const commands = new Set();
 
         for (const [key, value] of client.commands.entries()) {
             if (
                 !value.isModOnly &&
                 !value.hideCommand &&
+                !value.devOnly &&
                 !client.channelInfoCache.get(channel.slice(1))!.disabledCommands.includes(key)
             ) {
-                commands.push(`${prefix}${key}`);
+                commands.add(`${prefix}${value.name}`);
             }
         }
-        return client.say(channel, `/me ${commands.sort().join(", ")}`);
+        return client.say(channel, `/me ${Array.from(commands).sort().join(", ")}`);
     }
 } as Command;
