@@ -129,7 +129,7 @@ export const getUserInfo = async (client: Client, userID: string) => {
     let userInfo = client.userInfoCache.get(userID);
     if (!userInfo) {
         userInfo = await client.DBUser.findByIdAndUpdate(
-            userID,
+            userID.toLowerCase(),
             {},
             { new: true, upsert: true, setDefaultsOnInsert: true }
         );
