@@ -48,7 +48,7 @@ export default {
                 `/me ${name} is a ${personality.toLowerCase()} ${species.toLowerCase()}, ${phrase}! More info: ${url}`
             );
         } catch (e) {
-            log("ERROR", "./src/commands/AC/villager.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return client.say(channel, "/me I could not find a villager with that name.");
         }
     }

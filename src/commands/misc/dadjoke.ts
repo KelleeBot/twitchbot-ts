@@ -18,7 +18,7 @@ export default {
             const data = await resp.json();
             return client.say(channel, `/me ${data.joke}`);
         } catch (e) {
-            log("ERROR", "./src/commands/misc/dadjoke.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return errorMessage(client, channel);
         }
     }

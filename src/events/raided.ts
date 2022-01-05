@@ -25,7 +25,7 @@ const gamePlayed = async (username: string) => {
             const data = await resp.text();
             resolve(data);
         } catch (e) {
-            log("ERROR", ".src/events/raided.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             reject(e);
         }
     });

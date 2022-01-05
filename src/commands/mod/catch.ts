@@ -86,7 +86,7 @@ const getRandomPokemon = async (pokedexNum: number): Promise<string> => {
             );
             resolve(pokemon);
         } catch (e) {
-            log("ERROR", ".src/commands/mod/catch.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             reject(e);
         }
     });

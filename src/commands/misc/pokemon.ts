@@ -32,7 +32,7 @@ export default {
                 `/me ${userstate["display-name"]}, you have caught a total of ${totalPokemons} Pokémon! Here is your Pokédex (first 5): ${pokemons}.`
             );
         } catch (e) {
-            log("ERROR", ".src/commands/misc/pokemon.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return errorMessage(client, channel);
         }
     }

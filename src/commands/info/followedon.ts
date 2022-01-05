@@ -24,7 +24,7 @@ export default {
                 `/me ${userstate["display-name"]} followed ${process.env.CHANNEL_NAME} on ${data}.`
             );
         } catch (e) {
-            log("ERROR", ".src/commands/info/followedon.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return errorMessage(client, channel);
         }
     }

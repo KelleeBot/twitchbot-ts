@@ -63,7 +63,7 @@ export default {
                 `/me kellee1Love Be sure to show ${user} some love and follow them at https://www.twitch.tv/${user} They were last playing ${data} kellee1Love`
             );
         } catch (e) {
-            log("ERROR", "./src/commands/mod/so.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return errorMessage(client, channel);
         }
     }

@@ -30,7 +30,7 @@ const getGame = (channel: string): Promise<string> => {
                 reject("There was a problem retrieving game data.");
             }
         } catch (e) {
-            log("ERROR", "./command/misc/blind.js", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
         }
     });
 };

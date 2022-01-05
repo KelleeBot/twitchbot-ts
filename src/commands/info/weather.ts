@@ -14,7 +14,7 @@ export default {
             { search: "New York City, NY", degreeType: "C" },
             (err: string, result: any) => {
                 if (err) {
-                    log("ERROR", "./src/commands/info/weather.ts", err);
+                    log("ERROR", `${__filename}`, `An error has occurred: ${err}`);
                     return errorMessage(client, channel);
                 }
 

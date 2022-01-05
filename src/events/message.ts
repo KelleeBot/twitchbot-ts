@@ -125,7 +125,7 @@ export default async (
             flags
         });
     } catch (e) {
-        console.log(e);
+        log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
     }
 };
 

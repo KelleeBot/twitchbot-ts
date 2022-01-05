@@ -20,7 +20,7 @@ export default {
 
             return client.say(channel, `/me ${channel.slice(1)} has been live for ${data}.`);
         } catch (e) {
-            log("ERROR", "./src/commands/info/uptime.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return errorMessage(client, channel);
         }
     }

@@ -18,7 +18,7 @@ export default {
             const color = await client.color(args[0]);
             return client.say(channel, `/me My color has been changed to ${color}.`);
         } catch (e) {
-            log("ERROR", "./src/commands/mod/color.ts", e);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return client.say(
                 channel,
                 "/me Color must be in one of the following: Blue, BlueViolet, CadetBlue, Chocolate, Coral, DodgerBlue, Firebrick, GoldenRod, Green, HotPink, OrangeRed, Red, SeaGreen, SpringGreen, YellowGreen."
