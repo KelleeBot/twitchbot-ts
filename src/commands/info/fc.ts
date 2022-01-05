@@ -3,6 +3,7 @@ import { setCooldown } from "../../utils/utils";
 
 export default {
     name: "fc",
+    aliases: ["friendcode", "code"],
     category: "Info",
     cooldown: 15,
     globalCooldown: true,

@@ -3,6 +3,7 @@ import { setCooldown } from "../../utils/utils";
 
 export default {
     name: "pw",
+    aliases: ["password"],
     category: "Misc",
     cooldown: 15,
     globalCooldown: true,

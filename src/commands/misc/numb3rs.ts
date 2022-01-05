@@ -6,6 +6,7 @@ const numAPI = ["trivia", "math"];
 
 export default {
     name: "numb3rs",
+    aliases: ["numbers"],
     category: "Misc",
     cooldown: 15,
     async execute({ client, channel, userstate }) {
