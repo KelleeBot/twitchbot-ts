@@ -24,8 +24,8 @@ export default {
 
                 const { location, current } = result[0];
                 const { winddisplay, temperature, windspeed, humidity } = current;
-                const fahrenheit = convertToFahrenheit(temperature);
-                const miles = convertToMiles(windspeed.split(" ")[0]);
+                const fahrenheit = convertToFahrenheit(+temperature);
+                const miles = convertToMiles(+windspeed.split(" ")[0]);
                 const direction = winddisplay.split(" ").splice(-1)[0];
                 const text = `Weather for ${location.name}: ${current.skytext} with a temperature of ${current.temperature}°C (${fahrenheit}°F). Wind is blowing from the ${direction} at ${windspeed} (${miles} m/h) and the humidity is ${humidity}%.`;
 
@@ -35,10 +35,7 @@ export default {
     }
 } as Command;
 
-const convertToFahrenheit = (temp: number) => {
-    return convert(temp, "C").to("F").toFixed(1);
-};
+const convertToFahrenheit = (temp: number) => convert(temp, "C").to("F").toFixed(1);
 
-const convertToMiles = (windspeed: number) => {
-    return convert(windspeed, "kilometers").to("miles").toFixed(1);
-};
+const convertToMiles = (windspeed: number) =>
+    convert(windspeed, "kilometers").to("miles").toFixed(1);
