@@ -19,7 +19,7 @@ export default {
             const formattedNum = formatNumber(num);
             return client.say(channel, `/me ${data.replace(num[0], formattedNum)}`);
         } catch (e) {
-            log("ERROR", ".src/commands/misc/numb3rs.ts", e.message);
+            log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
             return errorMessage(client, channel);
         }
     }
