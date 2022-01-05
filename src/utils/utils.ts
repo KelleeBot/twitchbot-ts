@@ -3,10 +3,19 @@ import { Client } from "../Client";
 import { Command } from "../interfaces/Command";
 import { Arguments } from "../types/Arguments";
 import { Flags } from "../types/Flags";
+import utc from "dayjs/plugin/utc";
+import dayjs from "dayjs";
+import timezone from "dayjs/plugin/timezone";
+import advanced from "dayjs/plugin/advancedFormat";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(advanced);
 
 const consoleColors = {
     SUCCESS: "\u001b[32m",
     WARNING: "\u001b[33m",
+    INFO: "\u001b[33m",
     ERROR: "\u001b[31m"
 };
 
@@ -168,9 +177,10 @@ const isBroadcaster = (user: string) => {
     return user.toLowerCase() === `${process.env.CHANNEL_NAME}`.toLowerCase();
 };
 
-const log = (type: "SUCCESS" | "ERROR" | "WARNING", path: string, text: string) => {
+const log = (type: "SUCCESS" | "ERROR" | "WARNING" | "INFO", path: string, text: string) => {
+    const timestamp = dayjs().tz("America/Denver").format("MM-DD-YYYY HH:mm:ss");
     console.log(
-        `\u001b[36;1m<KelleeBot>\u001b[0m\u001b[34m [${path}]\u001b[0m - ${consoleColors[type]}${text}\u001b[0m`
+        `\u001b[36;1m<${timestamp}>\u001b[0m\u001b[34m [${path}]\u001b[0m - ${consoleColors[type]}${text}\u001b[0m`
     );
 };
 
