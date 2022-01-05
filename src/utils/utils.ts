@@ -116,6 +116,19 @@ const getChannelInfo = async (client: Client, channel: string) => {
     return channelInfo;
 };
 
+export const getUserInfo = async (client: Client, userID: string) => {
+    let userInfo = client.userInfoCache.get(userID);
+    if (!userInfo) {
+        userInfo = await client.DBUser.findByIdAndUpdate(
+            userID,
+            {},
+            { new: true, upsert: true, setDefaultsOnInsert: true }
+        );
+        client.userInfoCache.set(userID, userInfo);
+    }
+    return userInfo;
+};
+
 const getCooldown = (client: Client, command: Command) => {
     return command.cooldown;
 };
