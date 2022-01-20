@@ -13,7 +13,7 @@
   "author": "iaraaron",
   "license": "ISC",
   "devDependencies": {
-    "@types/node-fetch": "^2.5.12",
+    "@types/node-fetch": "^3.0.3",
     "@types/string-similarity": "^4.0.0",
     "@types/tmi.js": "^1.8.1",
     "prettier": "^2.5.1"
@@ -21,8 +21,8 @@
   "dependencies": {
     "convert": "^4.3.2",
     "dayjs": "^1.10.7",
-    "dotenv": "^10.0.0",
-    "mongoose": "^6.1.5",
+    "dotenv": "^14.2.0",
+    "mongoose": "^6.1.7",
     "node-fetch": "^2.6.6",
     "string-similarity": "^4.0.4",
     "tmi.js": "^1.8.3",
