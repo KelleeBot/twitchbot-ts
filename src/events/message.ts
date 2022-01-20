@@ -156,7 +156,7 @@ const checkTwitchChat = async (
 
     if (famousChecker(message.toLowerCase())) {
         client
-            .ban(channel, userstate.username)
+            .ban(channel, userstate.username, "Famous bot")
             .then(() => {
                 client.say(channel, `/me No, I don't wanna become famous. Good bye!`);
             })
