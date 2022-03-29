@@ -3,7 +3,7 @@ import { setCooldown } from "../../utils/utils";
 
 export default {
     name: "taco",
-    aliases: ["🌮"],
+    aliases: ["🌮", "collab"],
     category: "Misc",
     cooldown: 15,
     execute({ client, channel, userstate }) {
