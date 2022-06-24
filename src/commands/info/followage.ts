@@ -1,5 +1,5 @@
 import { Command } from "../../interfaces/Command";
-import fetch from "node-fetch";
+import axios from "axios";
 import { errorMessage, log, replaceChars, setCooldown } from "../../utils/utils";
 
 export default {
@@ -9,17 +9,15 @@ export default {
     async execute({ client, channel, userstate }) {
         try {
             setCooldown(client, this, channel, userstate);
-            const resp = await fetch(
-                `https://beta.decapi.me/twitch/followage/${process.env.CHANNEL_NAME}/${userstate.username}?precision=7`
-            );
-            const data = await resp.text();
-            if (replaceChars(data) == "a user cannot follow themself") {
-                return client.say(channel, `/me ${data}`);
-            }
+
+            const resp = await axios.get(`https://beta.decapi.me/twitch/followage/${process.env.CHANNEL_NAME}/${userstate.username}?precision=7`);
+            if (!resp || !resp.data || !resp.data.length) return;
+
+            if (replaceChars(resp.data) == "a user cannot follow themself") return client.say(channel, `/me ${resp.data}`);
 
             return client.say(
                 channel,
-                `/me ${userstate["display-name"]} has been following ${process.env.CHANNEL_NAME} for ${data}.`
+                `/me ${userstate["display-name"]} has been following ${process.env.CHANNEL_NAME} for ${resp.data}.`
             );
         } catch (e) {
             log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
