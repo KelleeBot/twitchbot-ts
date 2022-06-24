@@ -1,6 +1,6 @@
 import { Command } from "../../interfaces/Command";
 import fetch from "node-fetch";
-import { log, setCooldown, errorMessage } from "../../utils/utils";
+import { log, setCooldown, errorMessage, getCurrentGame } from "../../utils/utils";
 
 export default {
     name: "so",
@@ -20,10 +20,9 @@ export default {
         const user = args[0].startsWith("@") ? args[0].replace(/@/g, "").trim() : args[0].trim();
 
         try {
-            const res = await fetch(
-                `https://beta.decapi.me/twitch/game/${encodeURIComponent(user)}`
-            );
-            const data = await res.text();
+            const game = (await getCurrentGame(user).catch((e) =>
+                log("ERROR", `${__filename}`, `An error has occurred: ${e}`)
+            )) as string;
 
             if (user.toLowerCase() == username.toLowerCase()) {
                 return client.say(channel, "/me You can't shout yourself out Kappa");
@@ -43,24 +42,24 @@ export default {
                 );
             }
 
-            if (!data || data == "") {
+            if (!game || !game.length || typeof game === "undefined") {
                 return client.say(
                     channel,
-                    `/me ${user} doesn't stream :( but you should still go give them a follow anyways! https://www.twitch.tv/${user}`
+                    `/me ${user} doesn't stream :( but you should go give them a follow anyways! https://www.twitch.tv/${user}`
                 );
             }
 
             if (
-                data.toLowerCase().includes("no user") ||
-                data.toLowerCase() == "404 page not found"
+                game.toLowerCase().includes("no user") ||
+                game.toLowerCase().includes("not found")
             ) {
-                return client.say(channel, "/me I couldn't find that user kellee1Cry");
+                return client.say(channel, `/me I couldn't find that user kellee1Cry`);
             }
 
             setCooldown(client, this, channel, userstate);
             return client.say(
                 channel,
-                `/me kellee1Love Be sure to show ${user} some love and follow them at https://www.twitch.tv/${user} They were last playing ${data} kellee1Love`
+                `/me kellee1Love Be sure to show ${user} some love and follow them at https://www.twitch.tv/${user} They were last playing ${game} kellee1Love`
             );
         } catch (e) {
             log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
