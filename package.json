@@ -19,6 +19,7 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "convert": "^4.3.2",
     "dayjs": "^1.10.7",
     "dotenv": "^14.2.0",
