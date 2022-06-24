@@ -7,6 +7,7 @@ import utc from "dayjs/plugin/utc";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import advanced from "dayjs/plugin/advancedFormat";
+import axios from "axios";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -249,6 +250,18 @@ const formatNumber = (num: number) => {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 };
 
+const getCurrentGame = (channel: string) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const resp = await axios.get(`https://beta.decapi.me/twitch/game/${channel}`);
+            if (resp) resolve(resp.data);
+            else reject("There was a problem retrieving game data.");
+        } catch (e) {
+            log("ERROR", `${__filename}`, `An error has occurred : ${e}`);
+        }
+    });
+};
+
 export {
     processArguments,
     getChannelInfo,
@@ -260,5 +273,6 @@ export {
     replaceChars,
     errorMessage,
     randomRange,
-    formatNumber
+    formatNumber,
+    getCurrentGame
 };
