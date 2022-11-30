@@ -15,14 +15,14 @@
   "devDependencies": {
     "@types/node-fetch": "^3.0.3",
     "@types/string-similarity": "^4.0.0",
-    "@types/tmi.js": "^1.8.1",
+    "@types/tmi.js": "^1.8.2",
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "convert": "^4.3.2",
-    "dayjs": "^1.10.7",
-    "dotenv": "^14.2.0",
+    "axios": "^1.2.0",
+    "convert": "^4.7.1",
+    "dayjs": "^1.11.6",
+    "dotenv": "^16.0.3",
     "mongoose": "^6.1.7",
     "node-fetch": "^2.6.6",
     "string-similarity": "^4.0.4",
