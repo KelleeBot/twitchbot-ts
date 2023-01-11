@@ -22,14 +22,15 @@ export default {
 
             const totalPokemons = result[0].pokemons.name.length;
             const pokemons = result[0].pokemons.name
-                .map((m: any) => m)
+                .map((m: string) => m)
+                .shuffle()
                 .slice(0, 5)
                 .join(", ");
 
             setCooldown(client, this, channel, userstate);
             return client.say(
                 channel,
-                `/me ${userstate["display-name"]}, you have caught a total of ${totalPokemons} Pokémon! Here is your Pokédex (first 5): ${pokemons}.`
+                `/me ${userstate["display-name"]}, you have caught a total of ${totalPokemons} Pokémon! Here is your Pokédex (random 5): ${pokemons}.`
             );
         } catch (e) {
             log("ERROR", `${__filename}`, `An error has occurred: ${e}`);
