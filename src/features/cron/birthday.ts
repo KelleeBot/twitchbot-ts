@@ -33,6 +33,6 @@ const getTimeRemaingText = () => {
 
 	if (hours === 0 && minutes === 0) return `Only ${seconds} ${secondsText} until Kéllee's birthday!!!`;
 	if (hours === 0) return `Only ${minutes} ${minutesText} and ${seconds} ${secondsText} until Kéllee's birthday!!!`;
-	if (hours === 0 && minutes === 0 && seconds === 0) return "IT'S KÉLLEE'S BIRTHDAY!!!! EVERYBODY WISH HER A HAPPY BIRTHDAY!!!!";
+	if (hours <= 0 && minutes <= 0 && seconds <= 0) return "IT'S KÉLLEE'S BIRTHDAY!!!! EVERYBODY WISH HER A HAPPY BIRTHDAY!!!!";
 	return `Only ${hours} ${hoursText}, ${minutes} ${minutesText} and ${seconds} ${secondsText} until Kéllee's birthday!!!`;
 };
