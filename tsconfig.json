@@ -10,15 +10,17 @@
         "strictFunctionTypes": true,
         "strictBindCallApply": true,
         "strictPropertyInitialization": true,
-        "noImplicitThis": true,
         "alwaysStrict": true,
         "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true,
-        "lib": ["esnext"]
-    }
+        "resolveJsonModule": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
