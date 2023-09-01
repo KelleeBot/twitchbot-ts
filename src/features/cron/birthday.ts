@@ -11,7 +11,7 @@ dayjs.extend(duration);
 dayjs.extend(timezone);
 
 export default (client: Client) => {
-	new cron.CronJob("00 */15 8-23 * * *", () => execute(client), null, true, "America/Denver");
+	new cron.CronJob("00 */15 20-23 * * *", () => execute(client), null, true, "America/Denver");
 };
 
 const execute = async (client: Client) => {
