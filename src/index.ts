@@ -1,21 +1,20 @@
 import "./interfaces/Prototype";
 
 import * as dotenv from "dotenv";
-import mongoose from "mongoose";
 
 import { Client } from "./Client";
-import { log, registerCommands, registerEvents, registerFeatures } from "./utils";
+import { log, registerFeatures } from "./utils";
 
 dotenv.config();
 
 (async () => {
-	try {
-		await mongoose.connect(`${process.env.MONGO_PATH}`);
-		log("SUCCESS", `${__filename}`, "Successfully connected to the database.");
-	} catch (e) {
-		log("ERROR", `${__filename}`, `Error connecting to database: ${e}`);
-		process.exit(1);
-	}
+	// try {
+	// 	await mongoose.connect(`${process.env.MONGO_PATH}`);
+	// 	log("SUCCESS", `${__filename}`, "Successfully connected to the database.");
+	// } catch (e) {
+	// 	log("ERROR", `${__filename}`, `Error connecting to database: ${e}`);
+	// 	process.exit(1);
+	// }
 
 	try {
 		const opts = {
@@ -46,8 +45,8 @@ dotenv.config();
 		client.channelCooldowns = new Map();
 		client.globalCooldowns = new Map();
 
-		await registerEvents(client, "../events");
-		await registerCommands(client, "../commands");
+		// await registerEvents(client, "../events");
+		// await registerCommands(client, "../commands");
 		await registerFeatures(client, "../features");
 	} catch (e) {
 		log("ERROR", `${__filename}`, `An error has occurred: ${e}.`);
